@@ -2,7 +2,6 @@ package com.janani.sms.commons.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Data
 @Entity
