@@ -1,13 +1,13 @@
 package com.janani.sms.profileservice.services;
 
-import com.janani.sms.commons.model.Student;
+import com.janani.sms.commons.model.Employee;
 
 import java.util.List;
 
-public interface StudentService {
-    Student save(Student student);
+public interface EmployeeService {
+    Employee save(Employee student);
 
-    Student fetchById(int profileId);
+    Employee fetchById(int profileId);
 
-    List<Student> fetchAllProfiles();
+    List<Employee> fetchAllProfiles();
 }
