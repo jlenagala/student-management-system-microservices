@@ -6,6 +6,9 @@ import com.janani.sms.profileservice.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 
 @Service
 public class StudentServiceImpl  implements StudentService{
@@ -17,4 +20,19 @@ public class StudentServiceImpl  implements StudentService{
 
         return studentRepository.save(student);
     }
+
+  @Override
+  public Student fetchById(int profileId) {
+    Optional<Student> student = studentRepository.findById(profileId);
+    if (student.isPresent()) {
+      return student.get();
+    } else {
+      return null;
+    }
+  }
+
+  @Override
+  public List<Student> fetchAllProfiles() {
+    return studentRepository.findAll();
+  }
 }
