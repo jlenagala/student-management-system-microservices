@@ -1,6 +1,6 @@
 package com.janani.sms.profileservice.services;
 
-import com.janani.sms.commons.model.Employee;
+import com.janani.sms.commons.model.employee.Employee;
 import com.janani.sms.profileservice.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

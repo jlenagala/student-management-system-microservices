@@ -1,6 +1,6 @@
 package com.janani.sms.profileservice.controller;
 
-import com.janani.sms.commons.model.Employee;
+import com.janani.sms.commons.model.employee.Employee;
 import com.janani.sms.profileservice.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
