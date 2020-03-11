@@ -1,0 +1,462 @@
+{
+	"info": {
+		"_postman_id": "a434c661-0d63-43e9-b2a0-3e6420f3bdec",
+		"name": "sms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "configserver",
+			"item": [
+				{
+					"name": "profile/prod",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8191/profile-service/prod",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"profile-service",
+								"prod"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "student",
+			"item": [
+				{
+					"name": "save-service/profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer 9fa4e40c-a825-4375-b456-344ce22531e8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"currentStatus\":\"Active\",\r\n\"designation\":\"Manager\",\r\n\"dob\":\"1994-10-10\",\r\n\"gender\":\"Female\",\r\n\"name\":\"jana2\",\r\n\"nic\":\"768668777\",\r\n\t\r\n\t\"addresses\":{\r\n\t\t\"lane1\": \"lane 01\",\r\n\t\t\t\"lane2\": \"lane 02\",\r\n\t\t\"city\":\"kegalle\"\r\n\t\t\r\n\t},\r\n\t\"telephones\":[\r\n\t\t{\r\n\t\t\t\"number\":\"098765432\"}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8393/services/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8393",
+							"path": [
+								"services",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetchAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer 9fa4e40c-a825-4375-b456-344ce22531e8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8393/services/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8393",
+							"path": [
+								"services",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetchById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer 9fa4e40c-a825-4375-b456-344ce22531e8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8393/services/students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8393",
+							"path": [
+								"services",
+								"students",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "course",
+			"item": [
+				{
+					"name": "save-service/profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer 9fa4e40c-a825-4375-b456-344ce22531e8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"currentStatus\":\"Active\",\r\n\"designation\":\"Manager\",\r\n\"dob\":\"1994-10-10\",\r\n\"gender\":\"Female\",\r\n\"name\":\"jana2\",\r\n\"nic\":\"768668777\",\r\n\t\r\n\t\"addresses\":{\r\n\t\t\"lane1\": \"lane 01\",\r\n\t\t\t\"lane2\": \"lane 02\",\r\n\t\t\"city\":\"kegalle\"\r\n\t\t\r\n\t},\r\n\t\"telephones\":[\r\n\t\t{\r\n\t\t\t\"number\":\"098765432\"}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8393/services/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8393",
+							"path": [
+								"services",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetchAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer 9fa4e40c-a825-4375-b456-344ce22531e8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8393/services/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8393",
+							"path": [
+								"services",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetchById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer 9fa4e40c-a825-4375-b456-344ce22531e8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8393/services/students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8393",
+							"path": [
+								"services",
+								"students",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "employee",
+			"item": [
+				{
+					"name": "save-service/profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer 9fa4e40c-a825-4375-b456-344ce22531e8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"currentStatus\":\"Active\",\r\n\"designation\":\"Manager\",\r\n\"dob\":\"1994-10-10\",\r\n\"gender\":\"Female\",\r\n\"name\":\"jana2\",\r\n\"nic\":\"768668777\",\r\n\t\r\n\t\"addresses\":{\r\n\t\t\"lane1\": \"lane 01\",\r\n\t\t\t\"lane2\": \"lane 02\",\r\n\t\t\"city\":\"kegalle\"\r\n\t\t\r\n\t},\r\n\t\"telephones\":[\r\n\t\t{\r\n\t\t\t\"number\":\"098765432\"}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8393/services/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8393",
+							"path": [
+								"services",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetchAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer 6a157fe4-443c-4896-87d3-9035edcfdec6",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9191/services/profiles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9191",
+							"path": [
+								"services",
+								"profiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetchById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer 90c3b1bd-03b7-4a62-990a-e205310f6f77",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8292/services/profile?profileId=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8292",
+							"path": [
+								"services",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "profileId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "authorization-server",
+			"item": [
+				{
+					"name": "oauth/token-mysql",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "mobile",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "krish",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "kpass",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:9192/oauth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9192",
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:9191/oauth/check_token?token=1fe83c59-9b41-4605-9e08-ee16456e8e92",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "mobile",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9191/oauth/check_token?token=1fe83c59-9b41-4605-9e08-ee16456e8e92",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9191",
+							"path": [
+								"oauth",
+								"check_token"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "1fe83c59-9b41-4605-9e08-ee16456e8e92"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
