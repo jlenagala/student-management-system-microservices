@@ -1,0 +1,15 @@
+com\janani\sms\commons\model\student\Student.class
+com\janani\sms\commons\model\course\Course.class
+com\janani\sms\commons\model\student\CurrentStatus.class
+com\janani\sms\commons\model\employee\Telephone.class
+com\janani\sms\commons\model\student\Gender.class
+com\janani\sms\commons\model\employee\Address.class
+com\janani\sms\commons\model\employee\CurrentStatus.class
+com\janani\sms\commons\model\allocation\Allocation.class
+com\janani\sms\commons\model\course\CurrentStatus.class
+com\janani\sms\commons\model\employee\Gender.class
+com\janani\sms\commons\model\employee\Designation.class
+com\janani\sms\commons\model\student\Telephone.class
+com\janani\sms\commons\model\student\Address.class
+com\janani\sms\commons\model\employee\Employee.class
+com\janani\sms\commons\model\course\CourseType.class

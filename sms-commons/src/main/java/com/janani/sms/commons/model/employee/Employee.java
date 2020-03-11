@@ -23,8 +23,8 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private CurrentStatus currentStatus;
 
-    @OneToOne(mappedBy = "employee")
-    private User user;
+//    @OneToOne(mappedBy = "employee")
+//    private User user;
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<Telephone> telephones;
