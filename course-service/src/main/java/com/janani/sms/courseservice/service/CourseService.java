@@ -11,4 +11,6 @@ public interface CourseService {
     Course fetchById(int profileId);
 
     List<Course> fetchAllProfiles();
+
+    void deleteCourse(int courseId);
 }

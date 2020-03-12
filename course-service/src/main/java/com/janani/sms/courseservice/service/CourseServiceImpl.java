@@ -35,4 +35,9 @@ public class CourseServiceImpl implements CourseService {
     public List<Course> fetchAllProfiles() {
         return courseRepository.findAll();
     }
+
+    @Override
+    public void deleteCourse(int courseId) {
+        courseRepository.deleteById(courseId);
+    }
 }

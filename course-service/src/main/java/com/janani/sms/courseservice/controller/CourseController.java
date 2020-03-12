@@ -1,7 +1,6 @@
 package com.janani.sms.courseservice.controller;
 
 import com.janani.sms.commons.model.course.Course;
-import com.janani.sms.commons.model.employee.Employee;
 import com.janani.sms.courseservice.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -30,6 +29,18 @@ public class CourseController {
     @PreAuthorize("hasRole('ROLE_operator')")
     public List<Course> fetch() {
         return courseService.fetchAllProfiles();
+    }
+
+    @RequestMapping(value = "/courses", method = RequestMethod.PUT)
+    @PreAuthorize("hasAuthority('update_profile')")
+    public Course updateProfile(@RequestBody Course course) {
+        return courseService.save(course);
+    }
+
+    @RequestMapping(value = "/courses/{courseId}", method = RequestMethod.DELETE)
+    public void deleteProfile(@PathVariable int courseId) {
+        Course tempCourse = courseService.fetchById(courseId);
+        courseService.deleteCourse(courseId);
     }
 
 }
