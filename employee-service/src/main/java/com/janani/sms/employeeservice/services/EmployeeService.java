@@ -10,4 +10,6 @@ public interface EmployeeService {
     Employee fetchById(int profileId);
 
     List<Employee> fetchAllProfiles();
+
+    void deleteEmployee(int employeeId);
 }

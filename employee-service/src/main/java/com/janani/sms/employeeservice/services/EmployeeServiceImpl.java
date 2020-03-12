@@ -34,4 +34,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> fetchAllProfiles() {
         return employeeRepository.findAll();
     }
+
+    @Override
+    public void deleteEmployee(int employeeId) {
+        employeeRepository.deleteById(employeeId);
+    }
 }
