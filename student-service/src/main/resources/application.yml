@@ -1,5 +1,5 @@
 server:
-  port: 8484
+  port: 8494
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/sms_studentDB?createDatabaseIfNotExist=true

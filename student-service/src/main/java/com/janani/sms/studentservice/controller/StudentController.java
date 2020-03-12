@@ -31,4 +31,16 @@ public class StudentController {
         return studentService.fetchAllProfiles();
     }
 
+
+    @RequestMapping(value = "/students", method = RequestMethod.PUT)
+    @PreAuthorize("hasAuthority('update_profile')")
+    public Student updateProfile(@RequestBody Student student) {
+        return studentService.save(student);
+    }
+
+    @RequestMapping(value = "/students/{studentId}", method = RequestMethod.DELETE)
+    public void deleteProfile(@PathVariable int studentId) {
+        Student tempStudent = studentService.fetchById(studentId);
+        studentService.deleteStudent(studentId);
+    }
 }
