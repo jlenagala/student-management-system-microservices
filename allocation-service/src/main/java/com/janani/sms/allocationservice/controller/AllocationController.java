@@ -24,12 +24,15 @@ public class AllocationController {
 
     @RequestMapping(value = "/allocations/{allocationId}", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('create_profile')")
-    public Response fetch(@PathVariable int allocationId, @RequestParam(required = false) String type) {
+    public Response fetch(@PathVariable int allocationId,@RequestParam(required = false) String type, @RequestHeader (name="Authorization") String token) {
         if(type==null){
+            System.out.println(type);
             return new SimpleResponse((allocationService.fetchById(allocationId)));
         }
         else{
-           return allocationService.findDetailResponse(allocationId);
+//            System.out.println(type);
+//            System.out.println(token);
+           return allocationService.findDetailResponse(allocationId,token);
         }
         //return allocationService.fetchById(allocationId);
     }
