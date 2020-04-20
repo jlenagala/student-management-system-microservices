@@ -3,10 +3,10 @@ server:
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/sms_allocationDB?createDatabaseIfNotExist=true
-    username: user
-    password: password
-    #    username: root
-    #    password: root123
+#    username: user
+#    password: password
+    username: root
+    password: root123
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:

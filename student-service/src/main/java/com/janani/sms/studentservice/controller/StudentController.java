@@ -15,7 +15,7 @@ public class StudentController {
     StudentService studentService;
 
     @RequestMapping(value = "/students", method = RequestMethod.POST)
-    @PreAuthorize("hasAuthority('create_profile')")
+    //@PreAuthorize("hasAuthority('create_profile')")
     public Student save(@RequestBody Student student) {
         return studentService.save(student);
     }
@@ -26,7 +26,7 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/students", method = RequestMethod.GET)
-    @PreAuthorize("hasRole('ROLE_operator')")
+    //@PreAuthorize("hasRole('ROLE_operator')")
     public List<Student> fetch() {
         return studentService.fetchAllProfiles();
     }

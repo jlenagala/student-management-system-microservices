@@ -26,7 +26,7 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/courses", method = RequestMethod.GET)
-    @PreAuthorize("hasRole('ROLE_operator')")
+   // @PreAuthorize("hasRole('ROLE_operator')")
     public List<Course> fetch() {
         return courseService.fetchAllProfiles();
     }

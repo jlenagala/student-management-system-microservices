@@ -38,7 +38,7 @@ public class AllocationServiceImpl implements AllocationService {
         if (allocation.isPresent()) {
             return allocation.get();
         } else {
-            return null;
+            return new Allocation();
         }
     }
 
@@ -55,7 +55,7 @@ public class AllocationServiceImpl implements AllocationService {
     @Override
     public DetailResponse findDetailResponse(int allocationId,String token) {
         System.out.println("gggggg"+token);
-
+        System.out.println("gggggg "+allocationId);
         Allocation allocation=fetchById(allocationId);
 
         Student student=getStudent(allocation.getStudentId(),token);

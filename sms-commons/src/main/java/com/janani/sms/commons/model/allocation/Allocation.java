@@ -15,6 +15,6 @@ public class Allocation {
     int studentId;
     int courseId;
     int employeeId;
-    LocalDate from;
-    LocalDate to;
+    LocalDate fromDate;
+    LocalDate toDate;
     }
