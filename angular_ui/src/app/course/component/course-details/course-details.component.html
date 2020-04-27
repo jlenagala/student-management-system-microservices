@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="jumbotron"><h1>Courses</h1>
+    <form (ngSubmit)="!courseForm.invalid && saveCourses()" #courseForm="ngForm">
+
+        <fieldset class="form-group">
+            <label>Name</label>
+            <input type="text" #name="ngModel" [(ngModel)]="course.name" class="form-control" name="name"
+                required="required">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Duration</label>
+            <input type="text" #name="ngModel" [(ngModel)]="course.duration" class="form-control" name="duration"
+                required="required">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Description</label>
+            <input type="text" #name="ngModel" [(ngModel)]="course.description" class="form-control" name="description"
+                required="required">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label> Register Date</label>
+            <input type="date" #dobDate="ngModel" [ngModel]="course.regDate | date : 'yyyy-MM-dd'"
+                (ngModelChange)="course.regDate=$event" class="form-control" name="regDate" required="required">
+        </fieldset>
+
+        <!-- <fieldset class="form-group">
+            <label>Status</label>
+            <input type="text" #name="ngModel" [(ngModel)]="course.currentStatus" class="form-control"
+                name="currentStatus" required="required">
+        </fieldset> -->
+        <fieldset class="form-group">
+            <label>Status</label>
+            <select class="custom-select" #name="ngModel" [(ngModel)]="course.currentStatus" name="currentStatus">
+                <option selected>Available</option>
+                <option>Non-Available</option>
+            </select>
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Course Type</label>
+            <select class="custom-select" #name="ngModel" [(ngModel)]="course.courseType" class="form-control"
+                name="courseType">
+                <option selected>Advanced</option>
+                <option>Ordinary</option>
+            </select>
+        </fieldset>
+
+
+        <button type="submit" class="btn btn-success btn-sm">Register</button>
+    </form>
+    <!-- <div class="alert alert-warning" *ngIf="courseForm.dirty && courseForm.invalid">Enter valid values</div> -->
+    <div class="alert alert-warning" *ngIf="courseForm.dirty && dobDate.invalid">Enter valid date</div>
+    <div class="alert alert-warning" *ngIf="courseForm.dirty && name.invalid">Enter valid name</div>
+
+</div></div>

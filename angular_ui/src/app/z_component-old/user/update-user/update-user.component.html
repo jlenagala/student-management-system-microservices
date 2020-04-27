@@ -1,0 +1,29 @@
+<h1>Users</h1>
+<div class="container">
+    <div class="alert alert-warning" *ngIf="userForm.dirty && userForm.invalid">Enter valid values</div>
+    <div class="alert alert-warning" *ngIf="userForm.dirty && dobDate.invalid">Enter valid date</div>
+    <div class="alert alert-warning" *ngIf="userForm.dirty && name.invalid">Enter valid name</div>
+    
+    
+    <form (ngSubmit)="!userForm.invalid && saveUsers()" #userForm="ngForm">
+
+        <fieldset class="form-group">
+            <label>
+                Name
+            </label>
+            <input type="text" #name="ngModel"
+            [(ngModel)]="user.name" class="form-control" name="name" required="required">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>
+                Date of Birth
+            </label>
+            <input type="date" #dobDate="ngModel"
+            [ngModel]="user.dob | date : 'yyyy-MM-dd'" 
+            (ngModelChange)="user.dob=$event"
+                class="form-control" name="dob" required="required">
+        </fieldset>
+        <button type="submit" class="btn btn-success btn-sm">Save</button>
+    </form>
+</div>

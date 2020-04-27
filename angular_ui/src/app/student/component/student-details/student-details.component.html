@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1>Students</h1>
+
+        <form (ngSubmit)="!studentForm.invalid && saveStudents()" #studentForm="ngForm">
+            <fieldset class="form-group">
+                <label>NIC No</label>
+                <input type="text" #name="ngModel" [(ngModel)]="student.nic" class="form-control" name="nic"
+                    required="required">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>First Name</label>
+                <input type="text" #name="ngModel" [(ngModel)]="student.firstName" class="form-control" name="firstName"
+                    required="required">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Last Name</label>
+                <input type="text" #name="ngModel" [(ngModel)]="student.lastName" class="form-control" name="lastName"
+                    required="required">
+            </fieldset>
+
+            <fieldset class="form-group">
+                <label> Date of Birth</label>
+                <input type="date" #dobDate="ngModel" [ngModel]="student.dob | date : 'yyyy-MM-dd'"
+                    (ngModelChange)="student.dob=$event" class="form-control" name="dobDate" required="required">
+            </fieldset>
+
+            <fieldset class="form-group">
+                <label> Register Date</label>
+                <input type="date" #regDate="ngModel" [ngModel]="student.regDate | date : 'yyyy-MM-dd'"
+                    (ngModelChange)="student.regDate=$event" class="form-control" name="regDate" required="required">
+            </fieldset>
+
+            <fieldset class="form-group">
+                <label>Gender</label>
+                <input type="text" #name="ngModel" [(ngModel)]="student.gender" class="form-control" name="gender"
+                    required="required">
+            </fieldset>
+
+            <fieldset class="form-group">
+                <label>Status</label>
+                <select class="custom-select" #name="ngModel" [(ngModel)]="student.currentStatus" name="currentStatus">
+                    <option selected>Available</option>
+                    <option>Non-Available</option>
+                </select>
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Telephone</label>
+                <input type="text" #telephone="ngModel" [(ngModel)]="student.telephones" class="form-control"
+                    name="telephone" required="required">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Lane 01</label>
+                <input type="text" #name="ngModel" [(ngModel)]="student.addresses.lane1" class="form-control"
+                    name="lane1" required="required">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Lane 02</label>
+                <input type="text" #name="ngModel" [(ngModel)]="student.addresses.lane2" class="form-control"
+                    name="lane2" required="required">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>City</label>
+                <input type="text" #name="ngModel" [(ngModel)]="student.addresses.city" class="form-control" name="city"
+                    required="required">
+            </fieldset>
+
+            <button type="submit" class="btn btn-success btn-sm">Register</button>
+        </form>
+        <!-- <div class="alert alert-warning" *ngIf="studentForm.dirty && studentForm.invalid">Enter valid values</div> -->
+        <div class="alert alert-warning" *ngIf="studentForm.dirty && dobDate.invalid">Enter valid date</div>
+        <div class="alert alert-warning" *ngIf="studentForm.dirty && name.invalid">Enter valid name</div>
+
+    </div>
+</div>

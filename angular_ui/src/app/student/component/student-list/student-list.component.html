@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="jumbotron">
+    <h2>Students List</h2>
+    <div class="alert alert-success" *ngIf='message'>{{message}}
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>NIC</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Register Date</th>
+                <th>Gender</th>
+                <th>Status</th>
+                <th>Contact Number</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let student of students">
+                <td>{{student.nic}}</td>
+                <td>{{student.firstName}}</td>
+                <td>{{student.lastName}}</td>
+                <td>{{student.dob | date}}</td>
+                <td>{{student.regDate | date}}</td>
+                <td>{{student.gender}}</td>
+                <td>{{student.currentStatus}}</td>
+                <td>{{student.telephones}}</td>
+                <td>{{student.addresses.lane1 }},{{student.addresses.lane2}},{{student.addresses.city}}</td>
+                <!--  ,{{student.addresses.lane2}, {{student.addresses.city}} -->
+                <td>
+                    <button (click)="regCourse(student.id)" class="btn btn-primary btn-sm">Register For Course</button>
+                    <br/><br/>
+                    <button (click)="updateStudent(student.id)" class="btn btn-warning btn-sm">Update</button>
+                   <br/><br/>
+                    
+                    <button (click)="deleteStudent(student.id)" class="btn btn-danger btn-sm">Delete</button>
+                </td>
+              
+            </tr>
+            <tr aria-colspan="3">
+                <div>
+                    <button (click)="addStudent()" class="btn btn-success btn-sm">Add Student</button>
+                </div>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>

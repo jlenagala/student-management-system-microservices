@@ -1,0 +1,54 @@
+
+<!-- <table><tr *ngFor="let course of courses">
+    <td>{{course.name}}</td>
+    </tr>
+</table> -->
+
+<div class="container">
+    <div class="jumbotron">
+    <h1>Allocations</h1>
+    <form (ngSubmit)="!allocationForm.invalid && saveAllocations()" #allocationForm="ngForm">
+        <!-- <fieldset class="form-group">
+            <label>NIC No</label>
+            <input type="text" #name="ngModel" class="form-control" name="nic"
+                required="required">
+        </fieldset> -->
+
+        <fieldset class="form-group">
+            <label>Courses</label>
+            <select id="name" name="name" class="form-control">
+                <option *ngFor="let course of courses">
+                    {{course.name}}
+                </option>
+            </select>
+        </fieldset>
+
+        <!-- <fieldset class="form-group">
+            <label>Courses</label>
+            <select id="name" name="name"  [(ngModel)]="courses.name" class="form-control">
+                <option *ngFor="let course of courses" [ngValue]= "course.id">
+                    {{course.name}}
+                </option>
+            </select>
+        </fieldset> -->
+
+        <fieldset class="form-group">
+            <label> From Date</label>
+            <input type="date" #fromDate="ngModel" [ngModel]="allocation.fromDate | date : 'yyyy-MM-dd'"
+                (ngModelChange)="allocation.fromDate=$event" class="form-control" name="fromDate" required="required">
+        </fieldset>
+        <fieldset class="form-group">
+            <label> Register Date</label>
+            <input type="date" #toDate="ngModel" [ngModel]="allocation.toDate | date : 'yyyy-MM-dd'"
+                (ngModelChange)="allocation.toDate=$event" class="form-control" name="toDate" required="required">
+        </fieldset>
+
+
+        <button type="submit" class="btn btn-success btn-sm">Register</button>
+    </form>
+    <div class="alert alert-warning" *ngIf="allocationForm.dirty && allocationForm.invalid">Enter valid values</div>
+    <!--     <div class="alert alert-warning" *ngIf="allocationForm.dirty && regDate.invalid">Enter valid date</div>
+   <div class="alert alert-warning" *ngIf="allocationForm.dirty && name.invalid">Enter valid name</div> -->
+
+</div>
+</div>

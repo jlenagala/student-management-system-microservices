@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="jumbotron">
+  <h2><strong>{{ currentUser.username }}</strong>'s Profile</h2>
+  <!-- <p>The .table-hover class enables a hover state on table rows:</p>             -->
+<!-- 
+  <div class="alert alert-success" *ngIf='message'>{{message}}
+  </div> -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role / Roles</th>
+        <!-- <th>Action</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ currentUser.username }}</td>
+        <td>{{ currentUser.email }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let role of currentUser.roles">
+              {{ role }}
+            </li>
+          </ul>
+        </td>
+        <!-- <td> -->
+          <!-- (click)="updateUsers(user.id)" -->
+          <!-- <button  class="btn btn-warning btn-sm">Update</button>
+          &nbsp; -->
+          <!-- (click)="deleteUsers(user.id)" -->
+          <!-- <button class="btn btn-danger btn-sm">Delete</button> -->
+        <!-- </td> -->
+
+      </tr>
+      <!-- <tr aria-colspan="3">
+        <div>
+          <button (click)="addUsers()" class="btn btn-success btn-sm">Add</button>
+        </div>
+      </tr> -->
+    </tbody>
+  </table>
+</div>
+<ng-template #loggedOut>
+  Please login.
+</ng-template>
