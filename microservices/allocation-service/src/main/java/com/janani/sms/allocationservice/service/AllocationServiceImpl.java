@@ -1,6 +1,8 @@
 package com.janani.sms.allocationservice.service;
 
 import com.janani.sms.allocationservice.model.DetailResponse;
+import com.janani.sms.allocationservice.model.DetailResponseByStudent;
+import com.janani.sms.allocationservice.model.Response;
 import com.janani.sms.allocationservice.repository.AllocationRepository;
 import com.janani.sms.commons.model.allocation.Allocation;
 import com.janani.sms.commons.model.course.Course;
@@ -11,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,12 +22,14 @@ import java.util.Optional;
 public class AllocationServiceImpl implements AllocationService {
     @Autowired
     AllocationRepository allocationRepository;
-    @Bean
-    RestTemplate getRestTemplate(RestTemplateBuilder builder){
-        return builder.build();
-    }
     @Autowired
     RestTemplate restTemplate;
+
+    @Bean
+    RestTemplate getRestTemplate(RestTemplateBuilder builder) {
+        return builder.build();
+    }
+
     @Override
     public Allocation save(Allocation allocation) {
 
@@ -42,14 +47,10 @@ public class AllocationServiceImpl implements AllocationService {
     }
 
     @Override
-    public List<Allocation> fetchAllProfiles() {
+    public List<Allocation> fetchAll() {
         return allocationRepository.findAll();
     }
 
-    @Override
-    public List<Allocation> fetchAll() {
-        return null;
-    }
 
     @Override
     public void deleteAllocation(int allocationId) {
@@ -59,62 +60,54 @@ public class AllocationServiceImpl implements AllocationService {
 
     @Override
     public DetailResponse findDetailResponse(int allocationId) {
-        Allocation allocation=fetchById(allocationId);
-        Student student=getStudent(allocation.getStudentId());
-        Course course=getCourse(allocation.getCourseId());
-        return new DetailResponse(allocation,student,course);
+        Allocation allocation = fetchById(allocationId);
+        Student student = getStudent(allocation.getStudentId());
+        Course course = getCourse(allocation.getCourseId());
+        return new DetailResponse(allocation, student, course);
 
     }
 
-    private Student getStudent(int studentId){
-        Student student=restTemplate.getForObject("http://localhost:8494/services/students/"+studentId,Student.class);
+    @Override
+    public List<DetailResponse> findDetailResponseByStudent(int studentId) {
+        List<DetailResponse> detailResponseList = new ArrayList<>();
+        List<Allocation> allocationList = fetchAll();
+        for (Allocation allocation : allocationList) {
+            System.out.println(allocation);
+            if (allocation.getStudentId() == studentId) {
+                System.out.println("seeid" + studentId);
+                detailResponseList.add(findDetailResponse(allocation.getAllocationId()));
+            }
+        }
+
+        return detailResponseList;
+
+    }
+
+    @Override
+    public List<DetailResponse> findDetailResponseByCourse(int courseId) {
+        List<DetailResponse> detailResponseList = new ArrayList<>();
+        List<Allocation> allocationList = fetchAll();
+        for (Allocation allocation : allocationList) {
+            System.out.println(allocation);
+            if (allocation.getCourseId() == courseId) {
+                System.out.println("cid" + courseId);
+                detailResponseList.add(findDetailResponse(allocation.getAllocationId()));
+            }
+        }
+
+        return detailResponseList;
+    }
+
+    private Student getStudent(int studentId) {
+        Student student = restTemplate.getForObject("http://localhost:8494/services/students/" + studentId, Student.class);
         return student;
     }
-    private Course getCourse(int courseId){
-        Course course=restTemplate.getForObject("http://localhost:8585/services/courses/"+courseId,Course.class);
+
+    private Course getCourse(int courseId) {
+        Course course = restTemplate.getForObject("http://localhost:8585/services/courses/" + courseId, Course.class);
         return course;
     }
 
-    /*
-      @Override
-    public DetailResponse findDetailResponse(int allocationId,String token) {
-        System.out.println("gggggg"+token);
-        System.out.println("gggggg "+allocationId);
-        Allocation allocation=fetchById(allocationId);
-
-        Student student=getStudent(allocation.getStudentId(),token);
-
-        Course course=getCourse(allocation.getCourseId(),token);
-
-        return new DetailResponse(allocation,student,course);
-
-    }
-
-    private Student getStudent(int studentId,String token){
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", token);
-        HttpEntity<String> request = new HttpEntity<String>(headers);
-        ResponseEntity<Student> response = restTemplate.exchange("http://localhost:8494/services/students/"+studentId, HttpMethod.GET, request, Student.class);
-        Student student = response.getBody();
-
-        //Student student=restTemplate.getForObject("http://localhost:8494/services/students/"+studentId,Student.class,entity);
-                //getForObject("http://localhost:8494/services/students/"+studentId,entity,Student.class);
-
-        return student;
-    }
-    private Course getCourse(int courseId,String token){
-
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", token);
-        HttpEntity<String> request = new HttpEntity<String>(headers);
-        ResponseEntity<Course> response = restTemplate.exchange("http://localhost:8585/services/courses/"+courseId, HttpMethod.GET, request, Course.class);
-        Course course = response.getBody();
-//        HttpEntity<String> entity = new HttpEntity<String>(headers);
-//        Course course=restTemplate.getForObject(,Course.class,entity);
-        return course;
-    }
-     */
 }
 
 

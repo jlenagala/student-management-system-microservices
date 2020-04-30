@@ -38,4 +38,10 @@ public class DetailResponse implements Response{
         this.student = student;
         this.course = course;
     }
+
+    public DetailResponse(Student student, Course course) {
+        this.student = student;
+        this.course = course;
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.janani.sms.allocationservice.controller;
 
+import com.janani.sms.allocationservice.model.DetailResponse;
 import com.janani.sms.allocationservice.model.Response;
 import com.janani.sms.allocationservice.model.SimpleResponse;
 import com.janani.sms.allocationservice.service.AllocationService;
@@ -17,35 +18,29 @@ public class AllocationController {
     AllocationService allocationService;
 
     @RequestMapping(value = "/allocations", method = RequestMethod.POST)
-   // @PreAuthorize("hasAuthority('create_profile')")
+    // @PreAuthorize("hasAuthority('create_profile')")
     public Allocation save(@RequestBody Allocation allocation) {
         return allocationService.save(allocation);
     }
-/*
-    @RequestMapping(value = "/allocations/{allocationId}", method = RequestMethod.GET)
-   // @PreAuthorize("hasAuthority('create_profile')")
-    public Response fetch(@PathVariable int allocationId,@RequestParam(required = false) String type, @RequestHeader (name="Authorization") String token) {
-        if(type==null){
-            System.out.println(type);
-            return new SimpleResponse((allocationService.fetchById(allocationId)));
-        }
-        else{
-//            System.out.println(type);
-//            System.out.println(token);
-           return allocationService.findDetailResponse(allocationId,token);
-        }
-        //return allocationService.fetchById(allocationId);
+
+    @RequestMapping(value = "/allocationsByStudent/{studentId}", method = RequestMethod.GET)
+    //@PreAuthorize("hasAuthority('create_profile')")
+    public List<DetailResponse> fetchByStudent(@PathVariable int studentId) {
+        return allocationService.findDetailResponseByStudent(studentId);
     }
 
- */
+    @RequestMapping(value = "/allocationsByCourse/{courseId}", method = RequestMethod.GET)
+    //@PreAuthorize("hasAuthority('create_profile')")
+    public List<DetailResponse> fetchByCourse(@PathVariable int courseId) {
+        return allocationService.findDetailResponseByCourse(courseId);
+    }
 
     @RequestMapping(value = "/allocations/{allocationId}", method = RequestMethod.GET)
     //@PreAuthorize("hasAuthority('create_profile')")
     public Response fetch(@PathVariable int allocationId, @RequestParam(required = false) String type) {
-        if(type==null){
+        if (type == null) {
             return new SimpleResponse((allocationService.fetchById(allocationId)));
-        }
-        else{
+        } else {
             return allocationService.findDetailResponse(allocationId);
         }
         //return allocationService.fetchById(allocationId);
@@ -54,8 +49,9 @@ public class AllocationController {
     @RequestMapping(value = "/allocation", method = RequestMethod.GET)
     //@PreAuthorize("hasRole('ROLE_admin')")
     public List<Allocation> fetch() {
-        return allocationService.fetchAllProfiles();
+        return allocationService.fetchAll();
     }
+
     @RequestMapping(value = "/allocations", method = RequestMethod.GET)
     //@PreAuthorize("hasRole('ROLE_admin')")
     public List<Allocation> fetchAll() {
@@ -64,7 +60,7 @@ public class AllocationController {
 
 
     @RequestMapping(value = "/allocations", method = RequestMethod.PUT)
-   // @PreAuthorize("hasAuthority('update_profile')")
+    // @PreAuthorize("hasAuthority('update_profile')")
     public Allocation updateProfile(@RequestBody Allocation allocation) {
         return allocationService.save(allocation);
     }
@@ -74,7 +70,6 @@ public class AllocationController {
         Allocation tempAllocation = allocationService.fetchById(allocationId);
         allocationService.deleteAllocation(allocationId);
     }
-
 
 
 }
